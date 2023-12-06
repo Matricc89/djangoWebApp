@@ -1,0 +1,77 @@
+{% extends "consesionario/padre.html" %}
+
+
+{% block contenido %}
+
+<h1>Datos cargados</h1>
+
+<h3>Autos</h3>
+
+{% if cars %}
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Color</th>
+            <th scope="col">Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for car in cars %}
+            <tr>
+                <td>{{ car.marca }}</td>
+                <td>{{ car.modelo }}</td>
+                <td>{% if car.color %}{{ car.color }}{% endif %}</td>
+                <td>U$S {{ car.precio }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<h3>Sucursales</h3>
+
+{% if garages %}
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Dirección</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for g in garages %}
+            <tr>
+                <td>{{ g.nombre }}</td>
+                <td>{{ g.direccion }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<h3>Clientes</h3>
+
+{% if customers %}
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Edad</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in customers %}
+            <tr>
+                <td>{{ c.nombre }}</td>
+                <td>{{ c.apellido }}</td>
+                <td>{{ c.edad }} años</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% endblock %}
