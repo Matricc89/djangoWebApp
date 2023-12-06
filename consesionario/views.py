@@ -6,8 +6,7 @@ from . forms import *
 def home(req):
     return render(req,'consesionario/index.html')
 
-def search(req):
-    return render(req,'consesionario/search.html')
+
 
 def customers_view(request):
      
