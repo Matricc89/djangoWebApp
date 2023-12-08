@@ -82,3 +82,23 @@ def list(req):
     #print(garages)
 
     return render(req,'consesionario/list.html',{"cars":cars,"customers":customers,"garages":garages})
+
+def search_view(request):
+
+    if request.method == "GET":
+        form = BuscarFormulario()
+        return render(
+            request,
+            "consesionario/search.html",
+            context={"form": form}
+        )
+    else:
+        formulario = BuscarFormulario(request.POST)
+        if formulario.is_valid():
+            informacion = formulario.cleaned_data
+            autos_filtrados = []
+            for auto in Auto.objects.filter(marca=informacion["marca"]):
+                autos_filtrados.append(auto)
+
+            contexto = {"Autos": autos_filtrados}
+            return render(request, "consesionario/autos_list.html", contexto)

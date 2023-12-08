@@ -11,6 +11,8 @@ urlpatterns = [
     path("garages/", views.garages_view, name='garages'),
     path("cars/", views.cars_view, name='cars'),
     path("list/", views.list, name='list'),
+    path("search/", views.search_view, name='search'),
+
 
     
 

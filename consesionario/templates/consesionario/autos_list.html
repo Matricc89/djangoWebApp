@@ -1,0 +1,18 @@
+{% extends "consesionario/padre.html" %}
+
+{% block contenido %}
+
+<div class="content-container">
+    <h2>Resultados encontrados</h2>
+
+    {% if Autos %}
+    <ul>
+        {% for auto in Autos %}
+        <li>{{ auto.marca }} {{ auto.modelo }} {{ auto.color }} U$s:{{ auto.precio }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No se encontraron resultados</p>
+    {% endif %}
+</div>
+{% endblock %}
