@@ -78,8 +78,7 @@ def list(req):
     garages = Sucursal.objects.all()
 
     print(cars)
-    #print(customers)
-    #print(garages)
+    
 
     return render(req,'consesionario/list.html',{"cars":cars,"customers":customers,"garages":garages})
 
@@ -97,7 +96,7 @@ def search_view(request):
         if formulario.is_valid():
             informacion = formulario.cleaned_data
             autos_filtrados = []
-            for auto in Auto.objects.filter(marca=informacion["marca"]):
+            for auto in Auto.objects.filter(marca__iexact=informacion["marca"].upper()):
                 autos_filtrados.append(auto)
 
             contexto = {"Autos": autos_filtrados}
