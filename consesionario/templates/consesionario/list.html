@@ -3,7 +3,7 @@
 
 {% block contenido %}
 
-<h1>Datos cargados</h1>
+<h2>Datos cargados</h2>
 
 <h3>Autos</h3>
 
@@ -15,6 +15,7 @@
             <th scope="col">Modelo</th>
             <th scope="col">Color</th>
             <th scope="col">Precio</th>
+            <th scope="col">Acciones</th> 
         </tr>
     </thead>
     <tbody>
@@ -24,6 +25,10 @@
                 <td>{{ car.modelo }}</td>
                 <td>{% if car.color %}{{ car.color }}{% endif %}</td>
                 <td>U$S {{ car.precio }}</td>
+                <td>
+                    <button class="btn btn-primary">Editar</button>
+                    <button class="btn btn-danger">Borrar</button>
+                </td>
             </tr>
         {% endfor %}
     </tbody>
@@ -38,6 +43,7 @@
         <tr>
             <th scope="col">Nombre</th>
             <th scope="col">Dirección</th>
+            <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +51,10 @@
             <tr>
                 <td>{{ g.nombre }}</td>
                 <td>{{ g.direccion }}</td>
+                <td>
+                    <button class="btn btn-primary">Editar</button>
+                    <button class="btn btn-danger">Borrar</button>
+                </td>
             </tr>
         {% endfor %}
     </tbody>
@@ -60,6 +70,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Edad</th>
+            <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -68,6 +79,10 @@
                 <td>{{ c.nombre }}</td>
                 <td>{{ c.apellido }}</td>
                 <td>{{ c.edad }} años</td>
+                <td>
+                    <button class="btn btn-primary">Editar</button>
+                    <button class="btn btn-danger">Borrar</button>
+                </td>
             </tr>
         {% endfor %}
     </tbody>
