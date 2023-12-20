@@ -26,7 +26,7 @@ def customers_view(request):
          modelo = Cliente(nombre=request.POST['nombre'],apellido=request.POST['apellido'],edad=request.POST['edad'])
          modelo.save()
         
-     return redirect("consesionario:index")
+     return redirect("consesionario:list")
 
 def garages_view(request):
      
@@ -66,7 +66,7 @@ def cars_view(request):
          modelo = Auto(marca=request.POST['marca'],modelo=request.POST['modelo'],color=request.POST['color'],precio=request.POST['precio'])
          modelo.save()
         
-     return redirect("consesionario:index")
+     return redirect("consesionario:list")
 
 
 
@@ -101,3 +101,22 @@ def search_view(request):
 
             contexto = {"Autos": autos_filtrados}
             return render(request, "consesionario/autos_list.html", contexto)
+        
+
+def delete_car(request, id):
+    try:
+        car = Auto.objects.get(id=id)
+        car.delete()
+        return redirect("consesionario:list")
+    except Auto.DoesNotExist:
+        
+        return redirect("consesionario:list")
+    
+def delete_garage(request, id):
+    try:
+        garage = Sucursal.objects.get(id=id)
+        garage.delete()
+        return redirect("consesionario:list")
+    except Sucursal.DoesNotExist:
+        
+        return redirect("consesionario:list")    
